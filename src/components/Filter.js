@@ -28,6 +28,4 @@ class Filter extends Component {
 }
 
 
-export default {
-  Filter,
-}
+export default Filter
