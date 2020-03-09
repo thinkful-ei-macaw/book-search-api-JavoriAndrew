@@ -2,10 +2,7 @@ import React, { Component } from "react";
 
 
 class Search extends Component {
-  state = {
-    printType: 'All',
-    bookType: 'No filter'
-  }
+  
 
   render() {
     return (
