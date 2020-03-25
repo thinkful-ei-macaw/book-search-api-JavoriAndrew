@@ -4,7 +4,7 @@ import React, { Component } from "react";
 class Filter extends Component {
   render() {
     return (
-      <form>
+     
         <div>
           <label htmlFor="print-type">Print Type: </label>
           <select name="print-type" id="print-type">
@@ -21,7 +21,6 @@ class Filter extends Component {
             <option value="paid-ebooks">paid-ebooks</option>
           </select>
         </div>
-      </form>
 
     )
   }

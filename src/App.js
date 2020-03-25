@@ -1,40 +1,33 @@
 import React, {Component} from 'react'
 import Header from './components/Header'
 import Search from './components/Search'
-import Filter from './components/Filter'
 import Results from './components/Results'
+import Api from './components/Api'
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      books: [],
-      printType: 'All',
-      bookType: 'No filter'
+    state = {
+      booksArray: []
     }
-  
-  }
 
-  const url = 'https://www.googleapis.com/books/v1/volumes?';
-
-  let apiKey = 'AIzaSyAUb3XcVJB47unBpnI0sygkiVsnow-IWko';
-
-  fetchBooks = () => {
-      fetch(url)
-          .then(response => response.json())
-          .then(books => this.setState({books}))
-  }
-
+    handleSearch = e => {
+      e.preventDefault();
+      const search = e.target.search.value;
+      const bookType = e.target['book-type'].value;
+      const printType = e.target['print-type'].value;
+      Api.bookFinder(search, bookType, printType)
+        .then(data => this.setState({
+          booksArray: data
+        }))
+    }
 
     render() {
       return (
         <div>
         <Header />
           <div>
-            <Search />
-            <Filter />
-            <Results />
+            <Search handleSearch={this.handleSearch}/>
+            <Results books={this.state.booksArray}/>
           </div>
         </div>
       )
